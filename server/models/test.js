@@ -11,4 +11,4 @@ class Test {
     }   
 }
 
-module.exports = Test;
+module.exports = new Test();
