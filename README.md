@@ -4,7 +4,7 @@
 - nodemon ./www/bin
 
 [reactjs]
-- create-react-app client-app
+- create-react-app app-name
 - edit package.json 
   add "proxy":"localhost:5000"
 - yarn start / npm start
