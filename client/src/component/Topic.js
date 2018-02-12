@@ -18,7 +18,7 @@ import util from 'util';
     postData= async (event)=>{
        
         event.preventDefault();
-        alert(this.state.items);
+        alert(JSON.stringify(this.state.items));
         let desc = {"name":"bbbb"};
         let res = await fetch('/topic/create', {
             method: 'POST',
@@ -65,7 +65,7 @@ import util from 'util';
                         {
                             this.state.items.map((data,index)=>(
                                 <p>
-                                {index}{data} <button type='button' onClick={()=>this.removeItem(index)} >-</button>
+                                {index+1}) {data} <button type='button' onClick={()=>this.removeItem(index)} >-</button>
                                 </p>
                             ))
                         }
