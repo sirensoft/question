@@ -15,7 +15,9 @@ import util from 'util';
         })
     }
     postData= async (event)=>{
+       
         event.preventDefault();
+        alert(this.state.inputs);
         let desc = {"name":"bbbb"};
         let res = await fetch('/topic/create', {
             method: 'POST',
