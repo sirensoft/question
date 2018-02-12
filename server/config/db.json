@@ -1,6 +1,6 @@
 {
     "host" : "localhost",
     "user" : "postgres",
-    "password" : "",
+    "password" : "1234",
     "database" : "question"
 }

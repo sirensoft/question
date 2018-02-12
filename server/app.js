@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-app.use('/', require('./controllers/index'));
+app.use('/topic', require('./controllers/topic'));
 
 
 // catch 404 and forward to error handler
