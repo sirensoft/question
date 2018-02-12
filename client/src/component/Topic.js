@@ -6,7 +6,7 @@ import util from 'util';
         super(props)
         this.state = {
             topic:'',           
-            desc:["bbb","aaa","sssss"]
+            inputs:["bbb","aaa","sssss"]
         }
     }
     topicChange=(event)=>{
@@ -32,16 +32,16 @@ import util from 'util';
             topic:''
         })        
     }
-    addDesc=()=>{
+    addInput=()=>{
         this.setState({          
-            desc:[...this.state.desc,""]
+            inputs:[...this.state.inputs,""]
         })
     }
-    delDesc=(index)=>{
-        let arr = this.state.desc;
+    delInput=(index)=>{
+        let arr = this.state.inputs;
         arr.splice(index,1)
         this.setState({
-            desc:arr
+            inputs:arr
         })
     }
 
@@ -52,12 +52,12 @@ import util from 'util';
                     หัวข้อใหญ่              
                         <input value={this.state.topic} onChange={this.topicChange} />                    
                     
-                        <p>หัวข้อย่อย <button type='button' onClick={this.addDesc}>+</button></p>
+                        <p>หัวข้อย่อย <button type='button' onClick={this.addInput}>+</button></p>
                         {
-                            this.state.desc.map((data,index)=>(
+                            this.state.inputs.map((data,index)=>(
                                 <p>
-                                {index}< input  value={data} />
-                                <button type='button' onClick={()=>this.delDesc(index)} >-</button>
+                                {index}< input value={data}  />
+                                <button type='button' onClick={()=>this.delInput(index)} >-</button>
                                 </p>
                             ))
                         }
