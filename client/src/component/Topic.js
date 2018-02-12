@@ -6,7 +6,8 @@ import util from 'util';
         super(props)
         this.state = {
             topic:'',           
-            inputs:["bbb","aaa","sssss"]
+            items:["bbb","aaa","sssss"],
+            itemVal:''
         }
     }
     topicChange=(event)=>{
@@ -17,7 +18,7 @@ import util from 'util';
     postData= async (event)=>{
        
         event.preventDefault();
-        alert(this.state.inputs);
+        alert(this.state.items);
         let desc = {"name":"bbbb"};
         let res = await fetch('/topic/create', {
             method: 'POST',
@@ -34,16 +35,22 @@ import util from 'util';
             topic:''
         })        
     }
-    addInput=()=>{
+    addItem=()=>{
         this.setState({          
-            inputs:[...this.state.inputs,""]
+            items:[...this.state.items,this.state.itemVal],
+            itemVal:''
         })
     }
-    delInput=(index)=>{
-        let arr = this.state.inputs;
+    removeItem=(index)=>{
+        let arr = this.state.items;
         arr.splice(index,1)
         this.setState({
-            inputs:arr
+            items:arr
+        })
+    }
+    itemChange =(event)=>{
+        this.setState({
+            itemVal : event.target.value
         })
     }
 
@@ -54,12 +61,11 @@ import util from 'util';
                     หัวข้อใหญ่              
                         <input value={this.state.topic} onChange={this.topicChange} />                    
                     
-                        <p>หัวข้อย่อย <button type='button' onClick={this.addInput}>+</button></p>
+                        <p>หัวข้อย่อย <input value = { this.state.itemVal} onChange={this.itemChange}/> <button type='button' onClick={this.addItem}>+</button></p>
                         {
-                            this.state.inputs.map((data,index)=>(
+                            this.state.items.map((data,index)=>(
                                 <p>
-                                {index}< input value={data}  />
-                                <button type='button' onClick={()=>this.delInput(index)} >-</button>
+                                {index}{data} <button type='button' onClick={()=>this.removeItem(index)} >-</button>
                                 </p>
                             ))
                         }
