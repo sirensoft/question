@@ -12,7 +12,7 @@
  Target Server Version : 100002
  File Encoding         : 65001
 
- Date: 13/02/2018 16:24:12
+ Date: 13/02/2018 16:26:40
 */
 
 
@@ -186,7 +186,7 @@ INSERT INTO "public"."topic" VALUES (6, '{
       "type": "string"
     },
     "choices": {
-      "title": "เมือง",
+      "title": "เมืองที่อาศัย",
       "type": "array",
       "items": {
         "type": "integer",
@@ -196,9 +196,9 @@ INSERT INTO "public"."topic" VALUES (6, '{
           3
         ],
         "enumNames": [
-          "New York",
-          "California",
-          "Dallas"
+          "พิษณุโลก",
+          "กรุงเทพฯ",
+          "ชลบุรี"
         ]
       },
       "uniqueItems": true
