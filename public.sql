@@ -12,7 +12,7 @@
  Target Server Version : 100002
  File Encoding         : 65001
 
- Date: 13/02/2018 15:22:47
+ Date: 13/02/2018 16:24:12
 */
 
 
@@ -58,6 +58,9 @@ INSERT INTO "public"."answer" VALUES (20, 3, '{"name":"4578963000","lname":"556"
 INSERT INTO "public"."answer" VALUES (21, 3, '{"name":"sdsdsd","lname":"sdsdsd","age":30}', NULL, NULL);
 INSERT INTO "public"."answer" VALUES (22, 3, '{"name":"อุเทน","lname":"จาดยางโทน","age":23,"sex":1,"bp":"120/80"}', NULL, NULL);
 INSERT INTO "public"."answer" VALUES (23, 3, '{"name":"ปวินวัฒน์","lname":"สุขเกษม","age":35,"sex":1,"bp":"125/75"}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (24, 3, '{"name":"dfdfdf","lname":"fggfgfgfgg"}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (25, 3, '{"name":"dddd","lname":"ffffff","choice":["bar","fuzz"]}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (26, 3, '{"name":"sdsd","lname":"sddd","age":20,"sex":1,"bp":"120/80","choices":[2,3]}', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for topic
@@ -147,6 +150,64 @@ INSERT INTO "public"."topic" VALUES (1, '{
       "minLength": 10
     }
   }
+}', NULL, NULL);
+INSERT INTO "public"."topic" VALUES (6, '{
+  "id": "3",
+  "title": "สำรวจผู้สูงอายุ",
+  "description": "ตามนโยบายกระทรวงสาธารณสุข",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "ชื่อ"
+    },
+    "lname": {
+      "type": "string",
+      "title": "นามสกุล"
+    },
+    "age": {
+      "type": "integer",
+      "title": "อายุ(ปี)"
+    },
+    "sex": {
+      "title": "เพศ",
+      "type": "number",
+      "enum": [
+        1,
+        2
+      ],
+      "enumNames": [
+        "ชาย",
+        "หญิง"
+      ]
+    },
+    "bp": {
+      "title": "ความดันวัดที่บ้าน",
+      "type": "string"
+    },
+    "choices": {
+      "title": "เมือง",
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [
+          1,
+          2,
+          3
+        ],
+        "enumNames": [
+          "New York",
+          "California",
+          "Dallas"
+        ]
+      },
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "name",
+    "lname"
+  ]
 }', NULL, NULL);
 INSERT INTO "public"."topic" VALUES (3, '{
   "id": "3",
@@ -284,10 +345,10 @@ CREATE OR REPLACE FUNCTION "public"."uuid_ns_x500"()
 -- ----------------------------
 ALTER SEQUENCE "public"."answer_id_seq"
 OWNED BY "public"."answer"."id";
-SELECT setval('"public"."answer_id_seq"', 24, true);
+SELECT setval('"public"."answer_id_seq"', 27, true);
 ALTER SEQUENCE "public"."topic_id_seq"
 OWNED BY "public"."topic"."id";
-SELECT setval('"public"."topic_id_seq"', 6, true);
+SELECT setval('"public"."topic_id_seq"', 7, true);
 
 -- ----------------------------
 -- Primary Key structure for table answer

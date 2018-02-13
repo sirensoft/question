@@ -15,7 +15,7 @@ import Form from "react-jsonschema-form";
         }        
     }
     componentWillMount(){      
-        this.getSchema(3); 
+        this.getSchema(6); 
      }    
     
     getSchema=async(id)=>{
@@ -28,7 +28,7 @@ import Form from "react-jsonschema-form";
 
    
     onSubmit=async ({schema,formData})=>{     
-        
+        console.log('formData',formData);
         let res = await this.addAnswer({id:schema.id,answer:formData}) ;
         console.log('submit',res);
         if(res===1){            
@@ -53,12 +53,19 @@ import Form from "react-jsonschema-form";
     }   
      
     render(){        
-        const log = (type) => console.log.bind(console, type);         
+        const log = (type) => console.log.bind(console, type);      
+        const uiSchema = {            
+              "choices": {
+                "ui:widget": "checkboxes"
+              }
+            }
+         
         return(
             <div>
              {(this.state.schema)?
                 <Form 
-                    schema={this.state.schema}
+                    schema={this.state.schema}  
+                    uiSchema={uiSchema}                  
                     formData={this.state.formData}
                     onChange={log("changed")}
                     onSubmit={this.onSubmit}
