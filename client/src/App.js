@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Topic from './component/Topic'; 
+import Todo from './component/Todo'; 
 class App extends Component {
   render(){
     return (
-      <div style={{marginLeft:100,marginTop:15}}>
-      <Topic />
+      <div style={{margin:25}}>
+        <Todo />
       </div>
     )
   }

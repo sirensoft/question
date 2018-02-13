@@ -2,15 +2,17 @@ var express = require('express');
 var router = express.Router();
 var mTopic = require('../models/Topic');
 
-router.get('/',(req,res)=>{
-    res.json({id:"topic"});
+
+
+router.get('/',async (req,res)=>{
+    let raw = await mTopic.findAll();
+    res.json(raw);
 });
 
-router.post('/create',async (req,res)=>{
-    console.log(req.body);
-    const {topic,desc,created,updated} = req.body;
-    let effect = await mTopic.create(topic,desc,created,updated)
-    res.json(effect);
+router.get('/:id',async (req,res)=>{
+    let {id}=req.params;
+    let raw = await mTopic.find(id);
+    res.json(raw[0].topic)
 });
 
 module.exports = router;

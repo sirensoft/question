@@ -1,31 +1,18 @@
 var knex = require('../config/knex');
-class Topic{
-    async create(topic,desc,created,updated){
-        try {                     
-            let effect = await knex('topic').insert({topic:topic,desc:desc,created:created,updated:updated});
-            return effect;
-        } catch (error) {
-            return error;
-        }
-       
-    }  
-    
-    async update(id){
+class Topic {
 
-    }
 
-    async delete(id){
-
+    async find(id) {
+        let raw= await knex('topic').where({ id: id })        
+        return raw;       
     }
     async findAll(){
-
-    }
-    async find(id){
-
+        let raw = await knex.select().from('topic');
+        return raw;
     }
 
-    
-    
+
+
 }
 
 module.exports = new Topic();
