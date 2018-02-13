@@ -12,7 +12,7 @@
  Target Server Version : 100002
  File Encoding         : 65001
 
- Date: 13/02/2018 13:10:58
+ Date: 13/02/2018 15:22:47
 */
 
 
@@ -52,6 +52,14 @@ CREATE TABLE "public"."answer" (
 ;
 
 -- ----------------------------
+-- Records of answer
+-- ----------------------------
+INSERT INTO "public"."answer" VALUES (20, 3, '{"name":"4578963000","lname":"556"}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (21, 3, '{"name":"sdsdsd","lname":"sdsdsd","age":30}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (22, 3, '{"name":"อุเทน","lname":"จาดยางโทน","age":23,"sex":1,"bp":"120/80"}', NULL, NULL);
+INSERT INTO "public"."answer" VALUES (23, 3, '{"name":"ปวินวัฒน์","lname":"สุขเกษม","age":35,"sex":1,"bp":"125/75"}', NULL, NULL);
+
+-- ----------------------------
 -- Table structure for topic
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."topic";
@@ -66,43 +74,6 @@ CREATE TABLE "public"."topic" (
 -- ----------------------------
 -- Records of topic
 -- ----------------------------
-INSERT INTO "public"."topic" VALUES (1, '{
-  "title": "A registration form",
-  "description": "A simple form example.",
-  "type": "object",
-  "required": [
-    "firstName",
-    "lastName"
-  ],
-  "properties": {
-    "firstName": {
-      "type": "string",
-      "title": "First name"
-    },
-    "lastName": {
-      "type": "string",
-      "title": "Last name"
-    },
-    "age": {
-      "type": "integer",
-      "title": "Age"
-    },
-    "bio": {
-      "type": "string",
-      "title": "Bio"
-    },
-    "password": {
-      "type": "string",
-      "title": "Password",
-      "minLength": 3
-    },
-    "telephone": {
-      "type": "string",
-      "title": "Telephone",
-      "minLength": 10
-    }
-  }
-}', NULL, NULL);
 INSERT INTO "public"."topic" VALUES (2, '{
 "id":"2", "title": "ตอบคำถามสุขภาพ",
   "description": "โปรดกรอกข้อมูล",
@@ -139,6 +110,83 @@ INSERT INTO "public"."topic" VALUES (2, '{
       "minLength": 10
     }
   }
+}', NULL, NULL);
+INSERT INTO "public"."topic" VALUES (1, '{
+"id":"1",  "title": "A registration form",
+  "description": "A simple form example.",
+  "type": "object",
+  "required": [
+    "firstName",
+    "lastName"
+  ],
+  "properties": {
+    "firstName": {
+      "type": "string",
+      "title": "First name"
+    },
+    "lastName": {
+      "type": "string",
+      "title": "Last name"
+    },
+    "age": {
+      "type": "integer",
+      "title": "Age"
+    },
+    "bio": {
+      "type": "string",
+      "title": "Bio"
+    },
+    "password": {
+      "type": "string",
+      "title": "Password",
+      "minLength": 3
+    },
+    "telephone": {
+      "type": "string",
+      "title": "Telephone",
+      "minLength": 10
+    }
+  }
+}', NULL, NULL);
+INSERT INTO "public"."topic" VALUES (3, '{
+  "id": "3",
+  "title": "สำรวจผู้สูงอายุ",
+  "description": "ตามนโยบายกระทรวงสาธารณสุข",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "title": "ชื่อ"
+    },
+    "lname": {
+      "type": "string",
+      "title": "นามสกุล"
+    },
+    "age": {
+      "type": "integer",
+      "title": "อายุ(ปี)"
+    },
+    "sex": {
+      "title": "เพศ",
+      "type": "number",
+      "enum": [
+        1,
+        2
+      ],
+      "enumNames": [
+        "ชาย",
+        "หญิง"
+      ]
+    },
+    "bp": {
+      "title": "ความดันวัดที่บ้าน",
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "lname"
+  ]
 }', NULL, NULL);
 
 -- ----------------------------
@@ -236,10 +284,10 @@ CREATE OR REPLACE FUNCTION "public"."uuid_ns_x500"()
 -- ----------------------------
 ALTER SEQUENCE "public"."answer_id_seq"
 OWNED BY "public"."answer"."id";
-SELECT setval('"public"."answer_id_seq"', 2, false);
+SELECT setval('"public"."answer_id_seq"', 24, true);
 ALTER SEQUENCE "public"."topic_id_seq"
 OWNED BY "public"."topic"."id";
-SELECT setval('"public"."topic_id_seq"', 5, true);
+SELECT setval('"public"."topic_id_seq"', 6, true);
 
 -- ----------------------------
 -- Primary Key structure for table answer
