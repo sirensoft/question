@@ -18,7 +18,7 @@ app.use(cookieParser());
 
 
 app.use('/topic', require('./controllers/topic'));
-
+app.use('/answer',require('./controllers/answer'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

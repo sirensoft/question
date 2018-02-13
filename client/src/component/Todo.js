@@ -15,8 +15,8 @@ import SweetAlert from 'sweetalert2-react';
         
     }
     
-    getSchema=async()=>{
-        let raw = await fetch('/topic/2')
+    getSchema=async(id)=>{
+        let raw = await fetch('/topic/'+id)
         let schema =await raw.json()       
         this.setState({
             schema:schema
@@ -24,19 +24,29 @@ import SweetAlert from 'sweetalert2-react';
         
     }
 
+  
+
     componentWillMount(){      
-       this.getSchema(); 
+       this.getSchema(3); 
     }
    
-    onSubmit=({schema,formData})=>(
-        console.log('submit',"id="+schema.id,formData)       
+    onSubmit=({schema,formData})=>(        
+          this.addAnswer({id:schema.id,answer:formData})        
     );
-   
-   
+
+    addAnswer = async (data)=>{
+        let res = await fetch('/answer/create', {
+            method: 'POST',           
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        return res;  
+    }   
      
     render(){        
-          const log = (type) => console.log.bind(console, type); 
-            console.log('render','....render')             
+        const log = (type) => console.log.bind(console, type);         
         
         return(
             <div>
@@ -47,8 +57,7 @@ import SweetAlert from 'sweetalert2-react';
                     onError={log("errors")} >
                 </Form>
                 :'Loading...'
-             }
-                     
+             }                     
            
             </div>
         )

@@ -1,10 +1,10 @@
 var knex = require('../config/knex');
 
 class Answer{
-    async add(jdata){        
+    async create(data){        
         try {     
-            jdata = JSON.stringify(jdata);     
-            let res = await knex('answer').insert({topic_id:7,rawdata:jdata});  
+            //let json = JSON.stringify(json);     
+            let res = await knex('answer').insert({topic_id:data.id,answer:data.answer});  
             return res;
         } catch (error) {
             return error;
