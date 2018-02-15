@@ -1,11 +1,16 @@
 import React, {Component} from 'react';
 import Todo from './component/Todo'; 
+import {BrowserRouter,Link,Router,Route,Switch} from 'react-router-dom';
+
 class App extends Component {
   render(){
     return (
-      <div style={{margin:25}}>
-        <Todo />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path ="/" render={()=>(<h1>xxxxxx</h1>)} />
+          <Route path="/todo/:id" component={Todo}/>
+        </Switch>
+      </BrowserRouter>
     )
   }
 }
