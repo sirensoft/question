@@ -31,9 +31,12 @@ import Form from "react-jsonschema-form";
    
     onSubmit=async ({schema,formData})=>{     
         console.log('formData',formData);
-        formData.created = {dcreated:require('moment')().format('YYYY-MM-DD HH:mm:ss'),user:'ten'};
-        formData.topic_id = this.props.match.params.id;
-        let res = await this.addAnswer({id:schema.id,answer:formData}) ;
+        let data = {};
+        data.topic_id = this.props.match.params.id;
+        data.ans = formData;
+        data.created = {d_created:require('moment')().format('YYYY-MM-DD HH:mm:ss'),user:'ten'};
+        
+        let res = await this.addAnswer({id:schema.id,answer:data}) ;
         console.log('submit',res);
         if(res===1){            
             alert("สำเร็จ");
