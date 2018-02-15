@@ -6,6 +6,16 @@ class Topic extends Component {
   render() {
     return (
       <div>
+        <p>
+          <h2>
+            <a href="https://jsonformatter.org/" target="_blank">https://jsonformatter.org/</a>
+          </h2>
+          <h2>
+            <a
+              href=" https://github.com/mozilla-services/react-jsonschema-form/"
+              target="_blank">react-jsonschema-form</a>
+          </h2>
+        </p>
         <h1>รายการคำถาม</h1>
         <ul>
           <li>
