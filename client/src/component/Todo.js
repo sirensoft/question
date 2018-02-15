@@ -31,6 +31,8 @@ import Form from "react-jsonschema-form";
    
     onSubmit=async ({schema,formData})=>{     
         console.log('formData',formData);
+        formData.created = require('moment')().format('YYYY-MM-DD HH:mm:ss');
+        formData.topic_id = this.props.match.params.id;
         let res = await this.addAnswer({id:schema.id,answer:formData}) ;
         console.log('submit',res);
         if(res===1){            
