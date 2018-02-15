@@ -8,14 +8,16 @@ import Form from "react-jsonschema-form";
     constructor(props){
         super(props)
         console.log('contruct','....contruct')
-        this.state= {         
+        console.log('Props',props.match.params)
+        this.state= {  
+               
             schema :null,
             formData:null ,
              
         }        
     }
     componentWillMount(){      
-        this.getSchema(6); 
+        this.getSchema(this.props.match.params.id); 
      }    
     
     getSchema=async(id)=>{
